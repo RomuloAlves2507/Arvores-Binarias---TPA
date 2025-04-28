@@ -4,16 +4,7 @@ import java.util.Comparator;
 
 public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
 
-    private class No {
-        T valor;
-        No esquerdo;
-        No direito;
-
-        No(T valor) {
-            this.valor = valor;
-        }
-    }
-    private No raiz;
+    private No<T> raiz;
     private Comparator<T> comparador;
 
     public ArvoreBinaria(Comparator<T> comparador) {
@@ -22,12 +13,12 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
 
     @Override
     public void adicionar(T novoValor) {
-        No novoNo = new No(novoValor);
+        No<T> novoNo = new No<>(novoValor);
         if (raiz == null) {
             raiz = novoNo;
             return;
         }
-        No atual = raiz;
+        No<T> atual = raiz;
         while (true) {
             int comparacao = comparador.compare(novoValor, atual.valor);
             if (comparacao < 0) {
@@ -49,35 +40,72 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         }
     }
 
+    @Override
     public T pesquisar(T valor) {
-        System.out.println("Pesquisando: " + valor); //só para não dá erro
-        return valor;
+        No<T> atual = raiz;
+
+        while (atual != null) {
+            int comparacao = comparador.compare(valor, atual.valor);
+
+            if (comparacao == 0) {
+                return atual.valor;
+            }
+            else if (comparacao < 0) {
+                atual = atual.esquerdo;
+            }
+            else {
+                atual = atual.direito;
+            }
+        }
+        return null;
     }
 
+    @Override
     public T pesquisar(T valor, Comparator comparador) {
-        System.out.println("Pesquisando: " + valor);
-        return valor;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public T remover(T valor){
-        System.out.println("Remover: " + valor);
-        return valor;
+    @Override
+    public T remover(T valor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public int altura(){
-        return 0;
+    @Override
+    public int altura() {
+        return altura(raiz);
+    }
+    private int altura(No<T> no) {
+        if (no == null) {
+            return 0;
+        }
+        int alturaLadoEsquerdo = altura(no.esquerdo);
+        int alturaLadoDireito = altura(no.direito);
+        if (alturaLadoEsquerdo > alturaLadoDireito) {
+            return alturaLadoEsquerdo + 1;
+        } else {
+            return alturaLadoDireito + 1;
+        }
     }
 
-    public int quantidadeNos(){
-        return 0;
+    @Override
+    public int quantidadeNos() {
+        return quantidadeNos(raiz);
+    }
+    private int quantidadeNos(No<T> no) {
+        if (no == null) {
+            return 0;
+        }
+        return 1 + quantidadeNos(no.esquerdo) + quantidadeNos(no.direito);
     }
 
-    public String caminharEmNivel(){
-        return null;
+    @Override
+    public String caminharEmNivel() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public String caminharEmOrdem(){
-        return null;
+    @Override
+    public String caminharEmOrdem() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 
