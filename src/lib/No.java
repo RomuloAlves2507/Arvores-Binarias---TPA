@@ -10,4 +10,28 @@ public class No<T> {
         this.esquerdo = null;
         this.direito = null;
     }
+
+    public T getValor() {
+        return valor;
+    }
+
+    public void setValor(T valor) {
+        this.valor = valor;
+    }
+
+    public No<T> getEsquerdo() {
+        return esquerdo;
+    }
+
+    public void setEsquerdo(No<T> esquerdo) {
+        this.esquerdo = esquerdo;
+    }
+
+    public No<T> getDireito() {
+        return direito;
+    }
+
+    public void setDireito(No<T> direito) {
+        this.direito = direito;
+    }
 }
