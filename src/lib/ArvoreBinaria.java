@@ -1,6 +1,8 @@
 package lib;
 
 import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import org.w3c.dom.Node;
 
@@ -175,14 +177,44 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         return 1 + quantidadeNos(no.esquerdo) + quantidadeNos(no.direito);
     }
 
+    /**
+     * Retorna uma String contendo os elementos da árvore em nível (Raiz -> Filhos -> Níveis subsequentes).
+     *
+     * @return uma String com os elementos da árvore em nível
+     */
     @Override
     public String caminharEmNivel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        StringBuilder sb = new StringBuilder();
+        if (raiz != null) {
+            Queue<No<T>> fila = new LinkedList<>();
+            fila.add(raiz);  
+            caminharEmNivel(fila, sb); 
+        }
+        return sb.toString().trim();
     }
+    
+    /**
+     * Método auxiliar recursivo que realiza o percurso em nível na árvore binária,
+     * adicionando os valores visitados ao StringBuilder fornecido.
+     * 
+     * @param fila a fila que contém os nós da árvore a serem visitados
+     * @param sb o StringBuilder usado para acumular os valores
+     */
+    private void caminharEmNivel(Queue<No<T>> fila, StringBuilder sb) {
+        if (fila.isEmpty()) return;
+
+        No<T> atual = fila.poll();  
+        sb.append(atual.getValor()).append(" "); 
+    
+        if (atual.getEsquerdo() != null) fila.add(atual.getEsquerdo());
+        if (atual.getDireito() != null) fila.add(atual.getDireito());
+
+        caminharEmNivel(fila, sb);
+    }
+    
 
     /**
      * Retorna uma String contendo os elementos da árvore em ordem (Esquerda -> Raiz -> Direita).
-     * A ordem dos elementos será separada por um espaço.
      *
      * @return uma String com os elementos da árvore em ordem
      */
@@ -201,9 +233,8 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
      * @param sb o StringBuilder usado para acumular os valores
      */
     private void caminharEmOrdem(No<T> no, StringBuilder sb) {
-        if (no == null) {
-            return;
-        }
+        if (no == null) return;
+
         caminharEmOrdem(no.getEsquerdo(), sb);
         sb.append(no.getValor()).append(" ");
         caminharEmOrdem(no.getDireito(), sb);
