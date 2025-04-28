@@ -180,9 +180,33 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * Retorna uma String contendo os elementos da árvore em ordem (Esquerda -> Raiz -> Direita).
+     * A ordem dos elementos será separada por um espaço.
+     *
+     * @return uma String com os elementos da árvore em ordem
+     */
     @Override
     public String caminharEmOrdem() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        StringBuilder sb = new StringBuilder();
+        caminharEmOrdem(raiz, sb);
+        return sb.toString().trim();
+    }
+
+    /**
+     * Método auxiliar recursivo que realiza o percurso em ordem na árvore binária,
+     * adicionando os valores visitados ao StringBuilder fornecido.
+     *
+     * @param no o nó atual da árvore sendo visitado
+     * @param sb o StringBuilder usado para acumular os valores
+     */
+    private void caminharEmOrdem(No<T> no, StringBuilder sb) {
+        if (no == null) {
+            return;
+        }
+        caminharEmOrdem(no.getEsquerdo(), sb);
+        sb.append(no.getValor()).append(" ");
+        caminharEmOrdem(no.getDireito(), sb);
     }
 }
 
