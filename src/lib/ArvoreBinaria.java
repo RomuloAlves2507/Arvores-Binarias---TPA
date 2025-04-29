@@ -243,7 +243,7 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
      */
     @Override
     public int altura() {
-        return altura(raiz);
+        return altura(raiz) -1;
     }
 
     /**
@@ -259,7 +259,7 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         int alturaLadoEsquerdo = altura(no.esquerdo);
         int alturaLadoDireito = altura(no.direito);
         if (alturaLadoEsquerdo > alturaLadoDireito) {
-            return alturaLadoEsquerdo + 1;
+            return alturaLadoEsquerdo +1 ;
         } else {
             return alturaLadoDireito + 1;
         }

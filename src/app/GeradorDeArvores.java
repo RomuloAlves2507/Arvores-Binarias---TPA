@@ -93,7 +93,7 @@ public class GeradorDeArvores {
         nome+= geraPalavra(3+rand.nextInt(6));
         nome+=" ";
         nome+= geraPalavra(3+rand.nextInt(6));
-        return nome;
+        return "joão";
     }
     
      /**
