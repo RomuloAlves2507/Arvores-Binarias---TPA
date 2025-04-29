@@ -15,6 +15,11 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         this.comparador = comparador;
     }
 
+    /**
+     * Método que adiciona um novo valor à árvore binária.
+     * 
+     * @param novoValor o valor que será adicionado à árvore binária
+     */
     @Override
     public void adicionar(T novoValor) {
         No<T> novoNo = new No<>(novoValor);
@@ -189,10 +194,22 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         return sucessor;    
     }
 
+    /**
+     * Método que retorna a altura da árvore binária.
+     * 
+     * @return altura
+     */
     @Override
     public int altura() {
         return altura(raiz);
     }
+
+    /**
+     * Método auxiliar recursivo que calcula a altura de um nó da árvore binária.
+     * 
+     * @param no o nó a partir do qual a altura será calculada
+     * @return a altura do nó na árvore
+     */
     private int altura(No<T> no) {
         if (no == null) {
             return 0;
@@ -206,10 +223,21 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         }
     }
 
+    /**
+     * Método que retorna a quantidade de nós da árvore binária.
+     * 
+     * @return quantidadedeNos
+     */
     @Override
     public int quantidadeNos() {
         return quantidadeNos(raiz);
     }
+    /**
+     * Método auxiliar recursivo que calcula a quantidade de um nós da árvore binária.
+     * 
+     * @param no 
+     * @return quantidadeNos
+     */
     private int quantidadeNos(No<T> no) {
         if (no == null) {
             return 0;
@@ -232,7 +260,6 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         }
         return sb.toString().trim();
     }
-    
     /**
      * Método auxiliar recursivo que realiza o percurso em nível na árvore binária,
      * adicionando os valores visitados ao StringBuilder fornecido.
@@ -252,7 +279,6 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         caminharEmNivel(fila, sb);
     }
     
-
     /**
      * Retorna uma String contendo os elementos da árvore em ordem (Esquerda -> Raiz -> Direita).
      *
@@ -264,7 +290,6 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         caminharEmOrdem(raiz, sb);
         return sb.toString().trim();
     }
-
     /**
      * Método auxiliar recursivo que realiza o percurso em ordem na árvore binária,
      * adicionando os valores visitados ao StringBuilder fornecido.
