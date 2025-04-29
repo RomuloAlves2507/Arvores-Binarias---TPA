@@ -44,6 +44,12 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         }
     }
 
+    /**
+     * Método para pesquisar um valor na árvore, utilizando o comparador padrão
+     * 
+     * @param valor o valor a ser pesquisado na árvore
+     * @return o valor do nó encontrado, ou null se o valor não for encontrado
+     */
     @Override
     public T pesquisar(T valor) {
         No<T> atual = raiz;
@@ -64,11 +70,39 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         return null;
     }
 
+    /**
+     * Método para pesquisar um valor na árvore, utilizando comparador personalizado
+     * 
+     * @param valor o valor a ser pesquisado na árvore
+     * @return o valor do nó encontrado, ou null se o valor não for encontrado
+     */
     @Override
     public T pesquisar(T valor, Comparator comparador) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        No<T> atual = raiz;
+
+        while (atual != null) {
+            int comparacao = comparador.compare(valor, atual.getValor());
+
+            if (comparacao == 0) {
+                return atual.getValor();
+            }
+            else if (comparacao < 0) {
+                atual = atual.getEsquerdo();
+            }
+            else {
+                atual = atual.getDireito();
+            }
+        }
+        return null;
     }
 
+    /**
+     * Remove um nó da árvore binária e retorna o valor do nó removido.
+     * 
+     * 
+     * @param valor o valor do nó a ser removido
+     * @return o valor do nó removido, ou null se o nó não for encontrado
+     */
     @Override
     public T remover(T valor) {
         No<T> atual = raiz;
@@ -120,7 +154,7 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
 
         // CASO 4 : *** NÓ COM FILHOS EM AMBOS LADOS ***
         else {
-            No<T> successor = no_sucessor(atual);
+            No<T> successor = noSucessor(atual);
             if (atual == raiz) raiz = successor;
             else if (filho_esquerdo) pai.setEsquerdo(successor);
             else pai.setDireito(successor);
@@ -130,23 +164,29 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         return atual.getValor(); 
     }
 
-    private No<T> no_sucessor(No<T> apagar) { 
-        No<T> parentOfSuccessor = apagar;
-        No<T> successor = apagar;
-        No<T> current = apagar.getDireito();
+    /**
+     * Encontra o sucessor de um nó a ser apagado em uma árvore binária de busca.
+     * 
+     * @param apagar 
+     * @return sucessor
+     */
+    private No<T> noSucessor(No<T> apagar) { 
+        No<T> paiSucessor = apagar;
+        No<T> sucessor = apagar;
+        No<T> atual = apagar.getDireito();
     
-        while (current != null) {
-            parentOfSuccessor = successor;
-            successor = current;
-            current = current.getEsquerdo();
+        while (atual != null) {
+            paiSucessor = sucessor;
+            sucessor = atual;
+            atual = atual.getEsquerdo();
         }
     
-        if (successor != apagar.getDireito()) {
-            parentOfSuccessor.setEsquerdo(successor.getDireito());
-            successor.setDireito(apagar.getDireito());
+        if (sucessor != apagar.getDireito()) {
+            paiSucessor.setEsquerdo(sucessor.getDireito());
+            sucessor.setDireito(apagar.getDireito());
         }
 
-        return successor;    
+        return sucessor;    
     }
 
     @Override
