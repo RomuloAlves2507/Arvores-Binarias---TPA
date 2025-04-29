@@ -5,12 +5,14 @@ public class Livro {
     private String nome;
     private String autor;
     private String categoria;
+    private boolean disponibilidade;
 
     public Livro(Integer id, String titulo, String autor, String categoria) {
         this.nome = titulo;
         this.autor = autor;
         this.id = id;
         this.categoria = categoria;
+        this.disponibilidade = true;
     }
     public String getNome() {
         return nome;
@@ -25,6 +27,7 @@ public class Livro {
         return categoria;
     }
 
+    
     @Override
     public String toString() {
         return ("id=" + id +
@@ -32,6 +35,9 @@ public class Livro {
                 ", autor=" + autor +
                 ", categoria=" + categoria
         );
+    }
+    public boolean isDisponibilidade() {
+        return disponibilidade;
     }
 }
 
