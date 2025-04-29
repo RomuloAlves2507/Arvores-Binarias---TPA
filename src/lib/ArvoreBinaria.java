@@ -83,6 +83,10 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
      */
     @Override
     public T pesquisar(T valor, Comparator comparador) {
+        if (!comparador.getClass().equals(this.comparador.getClass())) {
+            return pesquisarLinear(valor, comparador);
+        }
+
         No<T> atual = raiz;
 
         while (atual != null) {
@@ -99,6 +103,44 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
             }
         }
         return null;
+    }
+    
+    /**
+     * Método para realizar a pesquisa linear (quando o comparador é diferente do usado na árvore)
+     * 
+     * @param valor 
+     * @param comparador
+     * @return o valor do nó encontrado ou null caso não seja encontrado
+     */
+    private T pesquisarLinear(T valor, Comparator comparador) {
+        return pesquisarPreOrdem(raiz, valor, comparador);
+    }
+
+    /**
+     * Método recursivo para realizar a pesquisa usando travessia pré-ordem
+     * A travessia pré-ordem percorre o nó atual, depois o filho esquerdo e depois o filho direito
+     * 
+     * @param no o nó atual sendo analisado
+     * @param valor o valor a ser pesquisado
+     * @param comparador o comparador utilizado para a comparação
+     * @return o valor do nó encontrado ou null caso não encontre
+     */
+    private T pesquisarPreOrdem(No<T> no, T valor, Comparator comparador) {
+        if (no == null) {
+            return null;  
+        }
+    
+        int comparacao = comparador.compare(valor, no.getValor());
+        if (comparacao == 0) {
+            return no.getValor();  
+        }
+    
+        T resultadoEsquerdo = pesquisarPreOrdem(no.getEsquerdo(), valor, comparador);
+        if (resultadoEsquerdo != null) {
+            return resultadoEsquerdo; 
+        }
+    
+        return pesquisarPreOrdem(no.getDireito(), valor, comparador); 
     }
 
     /**
