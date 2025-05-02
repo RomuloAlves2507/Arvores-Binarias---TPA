@@ -1,4 +1,4 @@
-package model;
+package appLibrary;
 
 public class Livro {
     private Integer id;
@@ -36,7 +36,7 @@ public class Livro {
                 ", categoria=" + categoria
         );
     }
-    public boolean isDisponibilidade() {
+    public boolean Disponibilidade() {
         return disponibilidade;
     }
 }
