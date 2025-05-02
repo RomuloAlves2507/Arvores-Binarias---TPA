@@ -65,14 +65,13 @@ public class AppRelatorioArvoreBinaria {
         gerador.geraArvorePerfeitamenteBalanceada(1,100,arv);
         System.out.println("Árvore Perfeitamente Balanceada Criada");
         //Vou fazer uma busca pela chave de busca da árvore, ou seja, matrícula
-        Aluno a = new Aluno(1,"JOÃO");
-        Aluno busca = arv.pesquisar(a);
+        Aluno busca = arv.pesquisar(new Aluno(2000000101,""));
         if (busca == null)
             System.out.println("Aluno não encontrado");
         else
             System.out.println("Aluno encontrado: "+busca);
         //Vou fazer uma busca por nome
-        busca = arv.pesquisar(new Aluno(0,"joão"), compPorNome);
+        busca = arv.pesquisar(new Aluno(0,"Pedro"), compPorNome);
         if (busca == null)
             System.out.println("Aluno não encontrado");
         else

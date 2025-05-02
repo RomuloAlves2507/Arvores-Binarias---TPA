@@ -1,4 +1,6 @@
-package appLibrary;
+package appLibrary.model.comparators;
+
+import appLibrary.model.entities.Livro;
 
 import java.util.Comparator;
 
