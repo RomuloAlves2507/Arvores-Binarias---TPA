@@ -20,17 +20,12 @@ Este repositório contém a implementação do segundo trabalho da disciplina **
 ## 🛠️ Tecnologias utilizadas
 
 - 💻 Linguagem: Java
-
----
-
-## 📎 Organização do projeto
-- Adicionar
-
+- 
 ---
 
 ## 🚀 Como executar
 - Adicionar
-
+---
 ## 👨‍🏫 Autoria
 - Romulo Alves
 - Vitor Ramos
