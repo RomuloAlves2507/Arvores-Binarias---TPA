@@ -1,1 +1,0 @@
-Esta pasta contém os arquivos relacionados à camada *view*, seguindo o padrão de arquitetura MVC.
