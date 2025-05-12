@@ -12,15 +12,15 @@ Este repositório contém a implementação do segundo trabalho da disciplina **
 ---
 
 ## 🧠 Conteúdos abordados
-- Adicionar
+- Árvores Binárias Perfeitamente Balanceada
+- Árvores Binárias Degeneradas
 
 ---
 
 ## 🛠️ Tecnologias utilizadas
 
-- 💻 Linguagem: Java  
-- 🎨 Interface Gráfica: JavaFX  
-
+- 💻 Linguagem: Java
+- 
 ---
 
 ## 📎 Organização do projeto
@@ -32,4 +32,6 @@ Este repositório contém a implementação do segundo trabalho da disciplina **
 - Adicionar
 
 ## 👨‍🏫 Autoria
-- Adicionar
+- Romulo Alves
+- Vitor Ramos
+- Allicia Rocha
