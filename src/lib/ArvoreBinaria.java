@@ -363,8 +363,8 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
      * Método auxiliar recursivo que realiza o percurso em pós-ordem na árvore binária,
      * adicionando os valores visitados ao StringBuilder fornecido.
      *
-     * @param no o nó atual da árvore sendo visitado
-     * @param sb o StringBuilder usado para acumular os valores
+     * @param no o nó atual da árvore sendo visitado.
+     * @param sb o StringBuilder usado para acumular os valores.
      */
     private void caminharPosOrdem(No<T> no, StringBuilder sb) {
         if (no == null) return;
