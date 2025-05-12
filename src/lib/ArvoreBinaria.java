@@ -352,11 +352,10 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         caminharEmOrdem(no.getDireito(), sb);
     }
 
-
-    public String caminharPosOrdem() {
+    public String caminharPosOrdem(){
         StringBuilder sb = new StringBuilder();
         caminharPosOrdem(raiz, sb);
-        return sb.toString().trim();
+        return sb.toString().trim;
     }
 
     /**
