@@ -3,8 +3,6 @@ package lib;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.w3c.dom.Node;
 
@@ -22,8 +20,6 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
      * 
      * @param novoValor o valor que será adicionado à árvore binária
      */
-
-
     @Override
     public void adicionar(T novoValor) {
         No<T> novoNo = new No<>(novoValor);
@@ -59,25 +55,24 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
      * @param valor o valor a ser pesquisado na árvore
      * @return o valor do nó encontrado, ou null se o valor não for encontrado
      */
-    private T pesquisarRecursivamente(No<T> no, T valor) {
-        if (no == null) {
-            return null;
-        }
-
-        int comparacao = comparador.compare(valor, no.valor);
-
-        if (comparacao == 0) {
-            return no.valor;
-        } else if (comparacao < 0) {
-            return pesquisarRecursivamente(no.esquerdo, valor);
-        } else {
-            return pesquisarRecursivamente(no.direito, valor);
-        }
-    }
-
     @Override
     public T pesquisar(T valor) {
-        return pesquisarRecursivamente(raiz, valor);
+        No<T> atual = raiz;
+
+        while (atual != null) {
+            int comparacao = comparador.compare(valor, atual.valor);
+
+            if (comparacao == 0) {
+                return atual.valor;
+            }
+            else if (comparacao < 0) {
+                atual = atual.esquerdo;
+            }
+            else {
+                atual = atual.direito;
+            }
+        }
+        return null;
     }
 
     /**
@@ -352,10 +347,17 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         caminharEmOrdem(no.getDireito(), sb);
     }
 
+    /**
+     * Método auxiliar recursivo que realiza o percurso em pós-ordem na árvore binária,
+     * adicionando os valores visitados ao StringBuilder fornecido.
+     *
+     * @param no o nó atual da árvore sendo visitado.
+     * @param sb o StringBuilder usado para acumular os valores.
+     */
     public String caminharPosOrdem(){
         StringBuilder sb = new StringBuilder();
         caminharPosOrdem(raiz, sb);
-        return sb.toString().trim;
+        return sb.toString().trim();
     }
 
     /**
@@ -372,5 +374,5 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         caminharPosOrdem(no.getDireito(), sb);
         sb.append(no.getValor()).append(" ");
     }
-}
 
+}
