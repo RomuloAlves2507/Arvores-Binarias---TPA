@@ -3,7 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class LeitorArquivos {
-    private static final String NOME_ARQUIVO = "C:\\Users\\USER\\OneDrive\\Documentos\\trabalho\\Arvores-Binarias---TPA\\src\\livros.txt";
+    private static final String NOME_ARQUIVO = "src/appLibrary/resources/livros(50).txt";
     
     public static void main(String[] args) {
         System.out.println("NOME_ARQUIVO");

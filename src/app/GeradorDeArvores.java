@@ -125,8 +125,9 @@ public class GeradorDeArvores {
     
 //---Este é o método citado na questão 8 do primeiro relatório
     public void geraArvorePerfeitamenteBalanceada(int min, int max, IArvoreBinaria<Aluno> arv){
-        //Se o valor da menor matrícula for menor ou igual ou maior valor é sinal que ainda preciso inserir elementos na árvore
-        //Senão essa recursão acabou...
+        // Se o valor da menor matrícula for menor ou igual ou maior valor é sinal 
+        // que ainda preciso inserir elementos na árvore
+        // Senão essa recursão acabou...
         if (min <= max){
             //Calculo a matrícula média desta geração e insiro um aluno com essa matrícula na árvore
             int media = (min+max)/2;
