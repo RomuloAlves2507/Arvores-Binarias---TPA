@@ -346,5 +346,33 @@ public class ArvoreBinaria<T> implements IArvoreBinaria<T> {
         sb.append(no.getValor()).append(" ");
         caminharEmOrdem(no.getDireito(), sb);
     }
-}
 
+    /**
+     * Método auxiliar recursivo que realiza o percurso em pós-ordem na árvore binária,
+     * adicionando os valores visitados ao StringBuilder fornecido.
+     *
+     * @param no o nó atual da árvore sendo visitado.
+     * @param sb o StringBuilder usado para acumular os valores.
+     */
+    public String caminharPosOrdem(){
+        StringBuilder sb = new StringBuilder();
+        caminharPosOrdem(raiz, sb);
+        return sb.toString().trim();
+    }
+
+    /**
+     * Método auxiliar recursivo que realiza o percurso em pós-ordem na árvore binária,
+     * adicionando os valores visitados ao StringBuilder fornecido.
+     *
+     * @param no o nó atual da árvore sendo visitado.
+     * @param sb o StringBuilder usado para acumular os valores.
+     */
+    private void caminharPosOrdem(No<T> no, StringBuilder sb) {
+        if (no == null) return;
+
+        caminharPosOrdem(no.getEsquerdo(), sb);
+        caminharPosOrdem(no.getDireito(), sb);
+        sb.append(no.getValor()).append(" ");
+    }
+
+}

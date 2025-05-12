@@ -61,5 +61,10 @@ public class ArvoreBinariaExemplo<T> implements IArvoreBinaria<T> {
     public String caminharEmOrdem() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.    
     }
+
+    @Override
+    public String caminharPosOrdem(){
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
         
 }

@@ -78,5 +78,12 @@ public interface IArvoreBinaria<T> {
      * @return String contendo os toString dos valores armazenados nos nós, separados por " \n ". Os nós devem ser percorridos em ordem. A String deve iniciar com "[" e finalizar com "]"
      */
     public String caminharEmOrdem();
+
+    /**
+     * Metódo que retona o resultado do caminhamento em pós-ordem na árvore.
+     * @return String contendo os toString dos valores armazenados nos nós, separados por " \n ". Os nós devem ser percorridos em ordem. A String deve iniciar com "[" e finalizar com "]"
+     */
+    public String caminharPosOrdem();
+
 }
     

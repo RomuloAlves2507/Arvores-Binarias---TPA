@@ -1,7 +1,5 @@
 package appLibrary.model.comparators;
-
 import appLibrary.model.entities.Livro;
-
 import java.util.Comparator;
 
 public class ComparadorID implements Comparator<Livro> {
